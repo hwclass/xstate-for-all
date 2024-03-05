@@ -1,0 +1,132 @@
+---
+import Header from "../components/Header";
+import Footer from "../components/Footer.vue";
+import Sidebar from "../components/Sidebar.svelte";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Global State in Multi-Framework Environment</title>
+  </head>
+  <body>
+    <Header client:only="react" />
+    <main class="flex">
+      <div class="w-3/12 h-12">
+        <!-- <Sidebar client:load/> -->
+      </div>
+      <div class="flex flex-col w-full mt-50 bg-gray-50 bg-slate-100 py-4 px-4">
+        <div class="flex justify-center items-center">
+          <img src="/cover.png" alt="A bird." width="880" height="370" />
+        </div>
+        <br />
+        <h2 class="text-l font-semibold">
+          Global State in Multi-Framework Environment
+        </h2>
+        <br />
+        <h3 class="text-m font-semibold">Introduction</h3>
+        <p class="w-full">
+          What we wanna achieve here is to combine multiple libraries and
+          frameworks under an umbrella of a meta framework, Astro and manage a
+          state with XState globally distributed across the whole application in
+          the client-side.
+        </p>
+        <br />
+        <div class="flex justify-center items-center">
+          <img src="/hype.png" width="880" />
+        </div>
+        <br />
+        <div class="flex justify-center items-center">
+          <img src="/possible.png" width="880" />
+        </div>
+        <br />
+        <h3 class="text-m font-semibold">Prerequisites</h3>
+        <p>
+          After clonning the project from
+          <a
+            href="https://www.github.com/hwclassName/xstate-for-all"
+            target="_blank"
+            class="font-bold">here</a
+          >, let's set the Node.js as version 20 via nvm and run `pnpm install`
+          and see what happens. Then we need to run the app itself by running
+          `pnpm dev` in the terminal. Then go hit to "http://localhost:4321" and
+          you will see the app running.
+        </p>
+        <br />
+        <h3 class="text-m font-semibold">Setting Up the Astro Project</h3>
+        <p>
+          Provide step-by-step instructions for setting up an Astro project.
+          Include any necessary installations and configurations.
+        </p>
+        <br />
+        <h3 class="text-m font-semibold">
+          Integrating XState into the Astro App
+        </h3>
+        <p>
+          I've preferred to create a separate folder as `states` and created a
+          JS file like `global.js`. Within the file, we have these:
+        </p>
+        <br />
+        <div class="flex justify-center items-center">
+          <img src="/code-global-state.png" width="880" />
+        </div>
+        <br />
+        <h3 class="text-m font-semibold">
+          React, Vue (3) and Svelte Integration
+        </h3>
+        <p>
+          For letting React to be used within an Astro application, we need the
+          @astro/react plugin and other several configurations within
+          astro.config.js file. Let's do the same for all other 2, Vue and
+          Svelte as well.
+        </p>
+        <br />
+        <div class="flex justify-center items-center">
+          <img src="/code-install-deps.png" width="880" />
+        </div>
+        <br />
+        <h3 class="text-m font-semibold">
+          Testing & Simulating the Application & the State
+        </h3>
+        <p>
+          Let's now run the app and you can see how it works with the global
+          state updated every time once you click a button within a specific
+          island component in Astro.
+        </p>
+        <iframe
+          loading="lazy"
+          src="https://stately.ai/registry/editor/embed/418cb852-e342-482a-b660-91f232cc4c01?machineId=3f62a3b3-96e7-43d7-b956-3c61e54bc8fd&mode=Simulate&colorMode=light"
+          style="display: block; width: 100%; aspect-ratio: 6 / 4;"
+        >
+          <a
+          href="https://stately.ai/registry/editor/embed/9e7f6b1e-416a-491f-a4a0-bba386a02d8d?mode=Design&machineId=e94d5674-7ab7-4a4e-b7a8-781609bfe523"
+          > View the <em>Embed feature machine</em> machine in Stately Studio
+          </a >.
+        </iframe>
+        <br />
+        <h3 class="text-m font-semibold">Conclusion</h3>
+        <p>
+          Beyond the hype within Frontend Engieering field is sometimes ridiculously easy to resist and find better and really nice ways to achieve decoupled UI strategies. That's one of them and hope we will be going on in the next article with how to separate each component here inside their own scopes as a monorepo but with their own CI/CD pipelines and so on...
+					For the previous article, you can go check here: <a href="https://hwclass.dev/posts/microapps-at-scale-in-the-age-of-meta-frameworks" target="_blank" class="font-bold">MicroApps at Scale in the Age of Meta Frameworks</a>
+        </p>
+        <br />
+        <h3 class="text-m font-semibold">Additional Resources</h3>
+        <p>
+          Here are the links you can go deeper about how it can be achieved and more...
+        </p>
+				<ul>
+					<li><a href="https://docs.astro.build/en/community-resources/content/" target="_blank" class="font-bold">Astro Community Educational Content</a></li>
+					<li><a href="https://docs.astro.build/en/guides/integrations-guide/react/" target="_blank" class="font-bold">Astro React Integration</a></li>
+					<li><a href="https://docs.astro.build/en/guides/integrations-guide/vue/" target="_blank" class="font-bold">Astro Vue Integration</a></li>
+					<li><a href="https://docs.astro.build/en/guides/integrations-guide/svelte/" target="_blank" class="font-bold">Astro Svelte Integration</a></li>
+				</ul>
+        <br />
+      </div>
+      <div class="w-3/12 h-12"></div>
+    </main>
+    <Footer client:only="vue" />
+  </body>
+</html>
